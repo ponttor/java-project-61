@@ -8,6 +8,8 @@ public class Gcd {
     /** Game rules. */
     private static final String RULES = "Find the greatest common divisor "
         + "of given numbers.";
+    /** RNG for game data. */
+    private static final SecureRandom RANDOM = new SecureRandom();
 
     public static String getRules() {
         return RULES;
@@ -16,10 +18,9 @@ public class Gcd {
     public static String[][] getRounds() {
         var roundsCount = hexlet.code.Engine.getRoundsCount();
         var rounds = new String[roundsCount][2];
-        var random = new SecureRandom();
         for (var i = 0; i < roundsCount; i++) {
-            var first = random.nextInt(1, MAX_RANDOM + 1);
-            var second = random.nextInt(1, MAX_RANDOM + 1);
+            var first = RANDOM.nextInt(1, MAX_RANDOM + 1);
+            var second = RANDOM.nextInt(1, MAX_RANDOM + 1);
             rounds[i][0] = first + " " + second;
             rounds[i][1] = String.valueOf(gcd(first, second));
         }

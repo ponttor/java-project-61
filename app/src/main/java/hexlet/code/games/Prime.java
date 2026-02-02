@@ -10,6 +10,8 @@ public class Prime {
     /** Game rules. */
     private static final String RULES = "Answer 'yes' if given number is "
         + "prime. Otherwise answer 'no'.";
+    /** RNG for game data. */
+    private static final SecureRandom RANDOM = new SecureRandom();
 
     public static String getRules() {
         return RULES;
@@ -18,9 +20,8 @@ public class Prime {
     public static String[][] getRounds() {
         var roundsCount = hexlet.code.Engine.getRoundsCount();
         var rounds = new String[roundsCount][2];
-        var random = new SecureRandom();
         for (var i = 0; i < roundsCount; i++) {
-            var number = random.nextInt(1, MAX_RANDOM + 1);
+            var number = RANDOM.nextInt(1, MAX_RANDOM + 1);
             var correctAnswer = isPrime(number) ? "yes" : "no";
             rounds[i][0] = String.valueOf(number);
             rounds[i][1] = correctAnswer;
