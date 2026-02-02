@@ -1,5 +1,6 @@
 plugins {
     id("application")
+    id("checkstyle")
     id("com.github.ben-manes.versions") version "0.53.0"
 }
 
@@ -18,6 +19,13 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+checkstyle {
+    toolVersion = "10.12.4"
+    config = resources.text.fromFile("config/checkstyle/checkstyle.xml")
+    configProperties["org.checkstyle.sun.suppressionfilter.config"] =
+        file("config/checkstyle/checkstyle-suppressions.xml").absolutePath
 }
 
 tasks.getByName("run", JavaExec::class) {
