@@ -1,6 +1,6 @@
 package hexlet.code.games;
 
-import java.util.concurrent.ThreadLocalRandom;
+import java.security.SecureRandom;
 
 public class Even {
     /** Maximum value for random numbers. */
@@ -20,7 +20,7 @@ public class Even {
     public static String[][] getRounds() {
         var roundsCount = hexlet.code.Engine.getRoundsCount();
         var rounds = new String[roundsCount][2];
-        var random = ThreadLocalRandom.current();
+        var random = new SecureRandom();
         for (var i = 0; i < roundsCount; i++) {
             var number = random.nextInt(1, MAX_RANDOM + 1);
             var correctAnswer = isEven(number) ? "yes" : "no";
