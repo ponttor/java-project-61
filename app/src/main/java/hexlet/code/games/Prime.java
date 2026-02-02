@@ -1,6 +1,6 @@
 package hexlet.code.games;
 
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Prime {
     /** Maximum value for random numbers. */
@@ -18,9 +18,9 @@ public class Prime {
     public static String[][] getRounds() {
         var roundsCount = hexlet.code.Engine.getRoundsCount();
         var rounds = new String[roundsCount][2];
-        var random = new Random();
+        var random = ThreadLocalRandom.current();
         for (var i = 0; i < roundsCount; i++) {
-            var number = random.nextInt(MAX_RANDOM) + 1;
+            var number = random.nextInt(1, MAX_RANDOM + 1);
             var correctAnswer = isPrime(number) ? "yes" : "no";
             rounds[i][0] = String.valueOf(number);
             rounds[i][1] = correctAnswer;

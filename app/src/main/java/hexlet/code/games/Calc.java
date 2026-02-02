@@ -1,6 +1,6 @@
 package hexlet.code.games;
 
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Calc {
     /** Maximum value for random numbers. */
@@ -18,10 +18,10 @@ public class Calc {
     public static String[][] getRounds() {
         var roundsCount = hexlet.code.Engine.getRoundsCount();
         var rounds = new String[roundsCount][2];
-        var random = new Random();
+        var random = ThreadLocalRandom.current();
         for (var i = 0; i < roundsCount; i++) {
-            var left = random.nextInt(MAX_RANDOM) + 1;
-            var right = random.nextInt(MAX_RANDOM) + 1;
+            var left = random.nextInt(1, MAX_RANDOM + 1);
+            var right = random.nextInt(1, MAX_RANDOM + 1);
             var op = OPERATORS[random.nextInt(OPERATORS.length)];
             var result = calculate(left, right, op);
             rounds[i][0] = left + " " + op + " " + right;

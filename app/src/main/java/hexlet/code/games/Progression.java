@@ -1,6 +1,6 @@
 package hexlet.code.games;
 
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Progression {
     /** Minimum progression length. */
@@ -22,12 +22,11 @@ public class Progression {
     public static String[][] getRounds() {
         var roundsCount = hexlet.code.Engine.getRoundsCount();
         var rounds = new String[roundsCount][2];
-        var random = new Random();
+        var random = ThreadLocalRandom.current();
         for (var i = 0; i < roundsCount; i++) {
-            var length = MIN_LENGTH
-                + random.nextInt(MAX_LENGTH - MIN_LENGTH + 1);
-            var start = random.nextInt(MAX_START) + 1;
-            var step = random.nextInt(MAX_STEP) + 1;
+            var length = random.nextInt(MIN_LENGTH, MAX_LENGTH + 1);
+            var start = random.nextInt(1, MAX_START + 1);
+            var step = random.nextInt(1, MAX_STEP + 1);
             var hiddenIndex = random.nextInt(length);
             var progression = buildProgression(
                 start,

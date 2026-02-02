@@ -1,6 +1,6 @@
 package hexlet.code.games;
 
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Gcd {
     /** Maximum value for random numbers. */
@@ -16,10 +16,10 @@ public class Gcd {
     public static String[][] getRounds() {
         var roundsCount = hexlet.code.Engine.getRoundsCount();
         var rounds = new String[roundsCount][2];
-        var random = new Random();
+        var random = ThreadLocalRandom.current();
         for (var i = 0; i < roundsCount; i++) {
-            var first = random.nextInt(MAX_RANDOM) + 1;
-            var second = random.nextInt(MAX_RANDOM) + 1;
+            var first = random.nextInt(1, MAX_RANDOM + 1);
+            var second = random.nextInt(1, MAX_RANDOM + 1);
             rounds[i][0] = first + " " + second;
             rounds[i][1] = String.valueOf(gcd(first, second));
         }
