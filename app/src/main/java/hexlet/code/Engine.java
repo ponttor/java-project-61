@@ -1,32 +1,26 @@
 package hexlet.code;
 
-import java.util.Random;
 import java.util.Scanner;
 
-public class Even {
+public class Engine {
     private static final int ROUNDS = 3;
 
-    private static boolean isEven(int number) {
-        return number % 2 == 0;
+    public static int getRoundsCount() {
+        return ROUNDS;
     }
 
-    private static String askName(Scanner scanner) {
+    public static void run(String rules, String[][] rounds) {
+        var scanner = new Scanner(System.in);
         System.out.println("Welcome to the Brain Games!");
         System.out.print("May I have your name? ");
         var name = scanner.nextLine();
         System.out.println("Hello, " + name + "!");
-        return name;
-    }
+        System.out.println(rules);
 
-    public static void play() {
-        var scanner = new Scanner(System.in);
-        var name = askName(scanner);
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
-        var random = new Random();
         for (var i = 0; i < ROUNDS; i++) {
-            var number = random.nextInt(100) + 1;
-            var correctAnswer = isEven(number) ? "yes" : "no";
-            System.out.println("Question: " + number);
+            var question = rounds[i][0];
+            var correctAnswer = rounds[i][1];
+            System.out.println("Question: " + question);
             System.out.print("Your answer: ");
             var answer = scanner.nextLine().trim();
             if (!answer.equals(correctAnswer)) {
