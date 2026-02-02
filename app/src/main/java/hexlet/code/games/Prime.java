@@ -3,7 +3,13 @@ package hexlet.code.games;
 import java.util.Random;
 
 public class Prime {
-    private static final String RULES = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+    /** Maximum value for random numbers. */
+    private static final int MAX_RANDOM = 100;
+    /** First odd divisor to check. */
+    private static final int FIRST_ODD_DIVISOR = 3;
+    /** Game rules. */
+    private static final String RULES = "Answer 'yes' if given number is "
+        + "prime. Otherwise answer 'no'.";
 
     public static String getRules() {
         return RULES;
@@ -14,7 +20,7 @@ public class Prime {
         var rounds = new String[roundsCount][2];
         var random = new Random();
         for (var i = 0; i < roundsCount; i++) {
-            var number = random.nextInt(100) + 1;
+            var number = random.nextInt(MAX_RANDOM) + 1;
             var correctAnswer = isPrime(number) ? "yes" : "no";
             rounds[i][0] = String.valueOf(number);
             rounds[i][1] = correctAnswer;
@@ -32,7 +38,7 @@ public class Prime {
         if (number % 2 == 0) {
             return false;
         }
-        for (var i = 3; i * i <= number; i += 2) {
+        for (var i = FIRST_ODD_DIVISOR; i * i <= number; i += 2) {
             if (number % i == 0) {
                 return false;
             }

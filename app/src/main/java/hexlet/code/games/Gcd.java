@@ -3,7 +3,11 @@ package hexlet.code.games;
 import java.util.Random;
 
 public class Gcd {
-    private static final String RULES = "Find the greatest common divisor of given numbers.";
+    /** Maximum value for random numbers. */
+    private static final int MAX_RANDOM = 100;
+    /** Game rules. */
+    private static final String RULES = "Find the greatest common divisor "
+        + "of given numbers.";
 
     public static String getRules() {
         return RULES;
@@ -14,8 +18,8 @@ public class Gcd {
         var rounds = new String[roundsCount][2];
         var random = new Random();
         for (var i = 0; i < roundsCount; i++) {
-            var first = random.nextInt(100) + 1;
-            var second = random.nextInt(100) + 1;
+            var first = random.nextInt(MAX_RANDOM) + 1;
+            var second = random.nextInt(MAX_RANDOM) + 1;
             rounds[i][0] = first + " " + second;
             rounds[i][1] = String.valueOf(gcd(first, second));
         }

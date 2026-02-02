@@ -3,6 +3,7 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Engine {
+    /** Number of rounds in each game. */
     private static final int ROUNDS = 3;
 
     public static int getRoundsCount() {
@@ -24,7 +25,8 @@ public class Engine {
             System.out.print("Your answer: ");
             var answer = scanner.nextLine().trim();
             if (!answer.equals(correctAnswer)) {
-                System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.");
+                System.out.println("'" + answer + "' is wrong answer ;(. "
+                    + "Correct answer was '" + correctAnswer + "'.");
                 System.out.println("Let's try again, " + name + "!");
                 return;
             }
