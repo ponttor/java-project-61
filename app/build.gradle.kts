@@ -24,8 +24,6 @@ tasks.test {
 checkstyle {
     toolVersion = "10.12.4"
     config = resources.text.fromFile("config/checkstyle/checkstyle.xml")
-    configProperties["org.checkstyle.sun.suppressionfilter.config"] =
-        file("config/checkstyle/checkstyle-suppressions.xml").absolutePath
 }
 
 tasks.getByName("run", JavaExec::class) {
