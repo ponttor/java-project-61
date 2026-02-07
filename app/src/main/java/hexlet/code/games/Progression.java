@@ -32,38 +32,34 @@ public class Progression {
             var progression = buildProgression(
                 start,
                 step,
-                length,
-                hiddenIndex
+                length
             );
-            rounds[i][0] = progression.question;
-            rounds[i][1] = String.valueOf(progression.hiddenValue);
+            var hiddenValue = progression[hiddenIndex];
+
+            rounds[i][0] = buildQuestion(progression, hiddenIndex);
+            rounds[i][1] = String.valueOf(hiddenValue);
         }
         return rounds;
     }
 
-    private static ProgressionData buildProgression(
-        int start,
-        int step,
-        int length,
-        int hiddenIndex
-    ) {
-        var builder = new StringBuilder();
-        var hiddenValue = 0;
-        for (var i = 0; i < length; i++) {
-            var current = start + i * step;
-            if (i == hiddenIndex) {
-                hiddenValue = current;
-                builder.append("..");
-            } else {
-                builder.append(current);
-            }
-            if (i < length - 1) {
-                builder.append(" ");
-            }
+    private static String buildQuestion(int[] progression, int hiddenIndex) {
+        var parts = new String[progression.length];
+        for (var i = 0; i < progression.length; i++) {
+            parts[i] = (i == hiddenIndex) ? ".." : String.valueOf(progression[i]);
         }
-        return new ProgressionData(builder.toString(), hiddenValue);
+        return String.join(" ", parts);
     }
 
-    private record ProgressionData(String question, int hiddenValue) {
+    private static int[] buildProgression(
+        int start,
+        int step,
+        int length
+    ) {
+        var progression = new int[length];
+        for (var i = 0; i < length; i++) {
+            progression[i] = start + i * step;
+        }
+        return progression;
     }
+
 }

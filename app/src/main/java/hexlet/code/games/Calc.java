@@ -35,7 +35,8 @@ public class Calc {
         return switch (op) {
             case '+' -> left + right;
             case '-' -> left - right;
-            default -> left * right;
+            case '*' -> left * right;
+            default -> throw new RuntimeException("Unknown user input " + op);
         };
     }
 }

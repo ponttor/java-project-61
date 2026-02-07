@@ -11,16 +11,6 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.10.0"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-}
-
-tasks.test {
-    useJUnitPlatform()
-}
-
 checkstyle {
     toolVersion = "10.12.4"
     config = resources.text.fromFile("config/checkstyle/checkstyle.xml")

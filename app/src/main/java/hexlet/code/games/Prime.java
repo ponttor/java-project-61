@@ -5,8 +5,6 @@ import java.security.SecureRandom;
 public class Prime {
     /** Maximum value for random numbers. */
     private static final int MAX_RANDOM = 100;
-    /** First odd divisor to check. */
-    private static final int FIRST_ODD_DIVISOR = 3;
     /** Game rules. */
     private static final String RULES = "Answer 'yes' if given number is "
         + "prime. Otherwise answer 'no'.";
@@ -39,7 +37,8 @@ public class Prime {
         if (number % 2 == 0) {
             return false;
         }
-        for (var i = FIRST_ODD_DIVISOR; i * i <= number; i += 2) {
+        var firstOddDivisor = 3;
+        for (var i = firstOddDivisor; i * i <= number; i += 2) {
             if (number % i == 0) {
                 return false;
             }
