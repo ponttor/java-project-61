@@ -28,6 +28,8 @@ public class Prime {
     }
 
     private static boolean isPrime(int number) {
+        final int firstOddDivisor = 3;
+
         if (number < 2) {
             return false;
         }
@@ -37,7 +39,7 @@ public class Prime {
         if (number % 2 == 0) {
             return false;
         }
-        var firstOddDivisor = 3;
+
         for (var i = firstOddDivisor; i * i <= number; i += 2) {
             if (number % i == 0) {
                 return false;

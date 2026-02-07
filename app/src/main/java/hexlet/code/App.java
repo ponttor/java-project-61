@@ -12,7 +12,7 @@ public class App {
         System.out.println("6 - Prime");
         System.out.println("0 - Exit");
         System.out.print("Your choice: ");
-        
+
         var userChoice = scanner.nextLine().trim();
         switch (userChoice) {
             case "1" -> {
